@@ -29,7 +29,9 @@ pipeline {
                 }
             }
             steps {
-                echo 'Test stage'
+                sh '''
+                    test -f build/index.html || (echo "Build failed" && exit 1)
+                '''
             }
         }
     }
